@@ -11,11 +11,18 @@
  * Abstract Class of Person
  */
 class Person {
+private:
+    std::string firstName;
+    std::string lastName;
+    int documentId;
+
 public:
 
     // Constructors
     Person();
+
     Person(const std::string &firstName, const std::string &lastName, int documentId);
+
     virtual ~Person() = default;
 
     // Gets and Sets
@@ -31,15 +38,9 @@ public:
 
     void setDocumentId(int documentId);
 
-    std::string processPaymentBankTransfer();
-    std::string processPaymentCash();
-    std::string processPaymentCheck();
-
     virtual std::string toString() const; // Virtual
-private:
-    std::string firstName;
-    std::string lastName;
-    int documentId;
+
+    std::string processPayment(IPaymentSender *paymentSender);
 };
 
 #endif //UNIT_TESTING_01_BASIC_PERSON_H
